@@ -6,6 +6,9 @@ public class Setor {
 	private String nome;
 	private Integer id_gerente;
 
+	public Setor() {
+	}
+	
 	public Setor(Integer id, String nome, Integer id_gerente) {
 		this.id = id;
 		this.nome = nome;
@@ -34,6 +37,11 @@ public class Setor {
 
 	public void setId_gerente(Integer id_gerente) {
 		this.id_gerente = id_gerente;
+	}
+
+	@Override
+	public String toString() {
+		return "Setor [id=" + id + ", nome=" + nome + ", id_gerente=" + id_gerente + "]";
 	}
 
 }
