@@ -6,6 +6,9 @@ public class Gerente extends Pessoa{
 
 	private String email;
 	
+	public Gerente() {
+	}
+	
 	public Gerente(Integer id, String nome, String cpf, String telefone, Date data_nascimento, String email) {
 		super(id, nome, cpf, telefone, data_nascimento);
 		this.email = email;
@@ -18,5 +21,12 @@ public class Gerente extends Pessoa{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + ", email=" + email + "]";
+	}
+	
+	
 	
 }
