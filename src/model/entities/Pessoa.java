@@ -10,6 +10,10 @@ public class Pessoa {
 	private Date data_nascimento;
 	private Integer id;
 
+	public Pessoa() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Pessoa(Integer id, String nome, String cpf, String telefone, Date data_nascimento) {
 		this.id = id;
 		this.nome = nome;
@@ -58,4 +62,9 @@ public class Pessoa {
 		this.data_nascimento = data_nascimento;
 	}
 
+	@Override
+	public String toString() {
+		return "Pessoa [nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", data_nascimento="
+				+ data_nascimento + ", id=" + id + "]";
+	}
 }
