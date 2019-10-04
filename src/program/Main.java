@@ -4,19 +4,17 @@ import java.text.ParseException;
 import java.util.List;
 
 import model.dao.DaoFactory;
-import model.dao.SetorDao;
-import model.entities.Setor;
+import model.dao.ProdutoDao;
+import model.entities.Produto;
 
 public class Main {
 
 	public static void main(String[] args) throws ParseException {
 
-		SetorDao setor = DaoFactory.createSetorDao();
+		ProdutoDao p = DaoFactory.createProdutoDao();
+		List<Produto> pro = p.findAll();
 		
-		List<Setor> setores = setor.findAll();
-		
-		
-		for(Setor x : setores) {
+		for(Produto x : pro) {
 			System.out.println(x);
 		}
 		

@@ -8,6 +8,9 @@ public class Produto {
 	private String descricao;
 	private Double valor;
 
+	public Produto() {
+	}
+	
 	public Produto(Integer id, Integer id_setor, String nome, String descricao, Double valor) {
 		this.id = id;
 		this.id_setor = id_setor;
@@ -55,5 +58,13 @@ public class Produto {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
+
+	@Override
+	public String toString() {
+		return "Produto [id=" + id + ", id_setor=" + id_setor + ", nome=" + nome + ", descricao=" + descricao
+				+ ", valor=" + valor + "]";
+	}
+	
+	
 
 }
