@@ -8,16 +8,17 @@ public class Venda {
 	private Integer id_cliente;
 	private Integer id_produto;
 	private Date data_venda;
-	private Double valor;
 	private Integer num_itens_vendidos;
 
-	public Venda(Integer id, Integer id_cliente, Integer id_produto, Date data_venda, Double valor,
+	public Venda() {
+	}
+	
+	public Venda(Integer id, Integer id_cliente, Integer id_produto, Date data_venda,
 			Integer num_itens_vendidos) {
 		this.id = id;
 		this.id_cliente = id_cliente;
 		this.id_produto = id_produto;
 		this.data_venda = data_venda;
-		this.valor = valor;
 		this.num_itens_vendidos = num_itens_vendidos;
 	}
 
@@ -53,14 +54,6 @@ public class Venda {
 		this.data_venda = data_venda;
 	}
 
-	public Double getValor() {
-		return valor;
-	}
-
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
-
 	public Integer getNum_itens_vendidos() {
 		return num_itens_vendidos;
 	}
@@ -69,4 +62,9 @@ public class Venda {
 		this.num_itens_vendidos = num_itens_vendidos;
 	}
 
+	@Override
+	public String toString() {
+		return "Venda [id=" + id + ", id_cliente=" + id_cliente + ", id_produto=" + id_produto + ", data_venda="
+				+ data_venda + ", num_itens_vendidos=" + num_itens_vendidos + "]";
+	}
 }
