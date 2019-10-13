@@ -4,15 +4,15 @@ public class Setor {
 
 	private Integer id;
 	private String nome;
-	private Integer id_gerente;
+	private Gerente gerente_setor;
 
 	public Setor() {
 	}
 	
-	public Setor(Integer id, String nome, Integer id_gerente) {
+	public Setor(Integer id, String nome, Gerente gerente) {
 		this.id = id;
 		this.nome = nome;
-		this.id_gerente = id_gerente;
+		this.gerente_setor = gerente;
 	}
 
 	public Integer getId() {
@@ -31,17 +31,17 @@ public class Setor {
 		this.nome = nome;
 	}
 
-	public Integer getId_gerente() {
-		return id_gerente;
+	public Gerente getGerente_setor() {
+		return gerente_setor;
 	}
 
-	public void setId_gerente(Integer id_gerente) {
-		this.id_gerente = id_gerente;
+	public void setGerente_setor(Gerente gerente_setor) {
+		this.gerente_setor = gerente_setor;
 	}
 
 	@Override
 	public String toString() {
-		return "Setor [id=" + id + ", nome=" + nome + ", id_gerente=" + id_gerente + "]";
+		return "Setor [id=" + id + ", nome=" + nome + ", gerente_setor=" + gerente_setor + "]";
 	}
 
 }

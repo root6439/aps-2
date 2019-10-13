@@ -4,29 +4,27 @@ import java.util.Date;
 
 public class Vendedor extends Pessoa{
 
-	private Integer id_setor;
+	private Setor setor_vendedor;
 	
 	public Vendedor() {
 	}
 	
-	public Vendedor(Integer id, String nome, String cpf, String telefone, Date data_nascimento, Integer id_setor) {
+	public Vendedor(Integer id, String nome, String cpf, String telefone, Date data_nascimento, Setor setor) {
 		super(id, nome, cpf, telefone, data_nascimento);
-		this.id_setor = id_setor;
+		this.setor_vendedor = setor;
 	}
 
-	public Integer getId_setor() {
-		return id_setor;
+	public Setor getSetor_vendedor() {
+		return setor_vendedor;
 	}
 
-	public void setId_setor(Integer id_setor) {
-		this.id_setor = id_setor;
+	public void setSetor_vendedor(Setor setor_vendedor) {
+		this.setor_vendedor = setor_vendedor;
 	}
 
 	@Override
 	public String toString() {
-		return super.toString() + " [id_setor=" + id_setor + "]";
+		return super.toString() + "Vendedor [setor_vendedor=" + setor_vendedor + "]";
 	}
-	
-	
-	
+
 }

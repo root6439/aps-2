@@ -5,19 +5,19 @@ import java.util.Date;
 public class Venda {
 
 	private Integer id;
-	private Integer id_cliente;
-	private Integer id_produto;
+	private Cliente venda_cliente;
+	private Produto venda_produto;
 	private Date data_venda;
 	private Integer num_itens_vendidos;
 
 	public Venda() {
 	}
-	
-	public Venda(Integer id, Integer id_cliente, Integer id_produto, Date data_venda,
+
+	public Venda(Integer id, Cliente venda_cliente, Produto venda_produto, Date data_venda,
 			Integer num_itens_vendidos) {
 		this.id = id;
-		this.id_cliente = id_cliente;
-		this.id_produto = id_produto;
+		this.venda_cliente = venda_cliente;
+		this.venda_produto = venda_produto;
 		this.data_venda = data_venda;
 		this.num_itens_vendidos = num_itens_vendidos;
 	}
@@ -30,20 +30,20 @@ public class Venda {
 		this.id = id;
 	}
 
-	public Integer getId_cliente() {
-		return id_cliente;
+	public Cliente getVenda_cliente() {
+		return venda_cliente;
 	}
 
-	public void setId_cliente(Integer id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setVenda_cliente(Cliente venda_cliente) {
+		this.venda_cliente = venda_cliente;
 	}
 
-	public Integer getId_produto() {
-		return id_produto;
+	public Produto getVenda_produto() {
+		return venda_produto;
 	}
 
-	public void setId_produto(Integer id_produto) {
-		this.id_produto = id_produto;
+	public void setVenda_produto(Produto venda_produto) {
+		this.venda_produto = venda_produto;
 	}
 
 	public Date getData_venda() {
@@ -64,7 +64,8 @@ public class Venda {
 
 	@Override
 	public String toString() {
-		return "Venda [id=" + id + ", id_cliente=" + id_cliente + ", id_produto=" + id_produto + ", data_venda="
-				+ data_venda + ", num_itens_vendidos=" + num_itens_vendidos + "]";
+		return "Venda [id=" + id + ", venda_cliente=" + venda_cliente + ", venda_produto=" + venda_produto
+				+ ", data_venda=" + data_venda + ", num_itens_vendidos=" + num_itens_vendidos + "]";
 	}
+	
 }

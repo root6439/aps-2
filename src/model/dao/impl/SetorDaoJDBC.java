@@ -10,6 +10,7 @@ import java.util.List;
 import databaseaccess.DB;
 import databaseaccess.DbException;
 import model.dao.SetorDao;
+import model.entities.Gerente;
 import model.entities.Setor;
 
 public class SetorDaoJDBC implements SetorDao{
@@ -28,7 +29,7 @@ public class SetorDaoJDBC implements SetorDao{
 		try {
 			ps = conn.prepareStatement("INSERT INTO setores VALUES (default, ?, ?)");
 			ps.setString(1, setor.getNome());
-			ps.setInt(2, setor.getId_gerente());
+			ps.setInt(2, setor.getGerente_setor().getId());
 			
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -47,7 +48,7 @@ public class SetorDaoJDBC implements SetorDao{
 		try {
 			ps = conn.prepareStatement("UPDATE setores SET nome_setor = ?, id_gerente = ? WHERE id_setor = ?");
 			ps.setString(1, setor.getNome());
-			ps.setInt(2, setor.getId_gerente());
+			ps.setInt(2, setor.getGerente_setor().getId());
 			ps.setInt(3, setor.getId());
 			
 			ps.executeUpdate();
@@ -83,16 +84,28 @@ public class SetorDaoJDBC implements SetorDao{
 		ResultSet rs = null;
 		
 		try {
-			ps = conn.prepareStatement("SELECT * FROM setores WHERE id_setor = ?");
+			ps = conn.prepareStatement("SELECT s.*, g.* FROM setores AS s " + 
+					"JOIN gerentes AS g " + 
+					"WHERE s.id_gerente = g.id_gerente AND s.id_setor = ?");
 			ps.setInt(1, id);
 			
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
+				
+				Gerente gerente = new Gerente();
+				gerente.setId(rs.getInt("id_gerente"));
+				gerente.setNome(rs.getString("nome_gerente"));
+				gerente.setCpf(rs.getString("cpf_gerente"));
+				gerente.setTelefone(rs.getString("telefone_gerente"));
+				gerente.setEmail(rs.getString("email_gerente"));
+				gerente.setData_nascimento(rs.getDate("dt_nasciment"));
+				
 				Setor setor = new Setor();
 				setor.setId(rs.getInt("id_setor"));
 				setor.setNome(rs.getString("nome_setor"));
-				setor.setId_gerente(rs.getInt("id_gerente"));
+				setor.setGerente_setor(gerente);
+				
 				return setor;
 			}
 		} catch (SQLException e) {
@@ -113,15 +126,26 @@ public class SetorDaoJDBC implements SetorDao{
 		ResultSet rs = null;
 		
 		try {
-			ps = conn.prepareStatement("SELECT * FROM setores");
+			ps = conn.prepareStatement("SELECT s.*, g.* FROM setores AS s " + 
+					"JOIN gerentes AS g " + 
+					"WHERE s.id_gerente = g.id_gerente");
 			
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
+				
+				Gerente gerente = new Gerente();
+				gerente.setId(rs.getInt("id_gerente"));
+				gerente.setNome(rs.getString("nome_gerente"));
+				gerente.setCpf(rs.getString("cpf_gerente"));
+				gerente.setTelefone(rs.getString("telefone_gerente"));
+				gerente.setEmail(rs.getString("email_gerente"));
+				gerente.setData_nascimento(rs.getDate("dt_nasciment"));
+				
 				Setor setor = new Setor();
 				setor.setId(rs.getInt("id_setor"));
 				setor.setNome(rs.getString("nome_setor"));
-				setor.setId_gerente(rs.getInt("id_gerente"));
+				setor.setGerente_setor(gerente);
 				
 				setores.add(setor);
 			}

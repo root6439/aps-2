@@ -3,7 +3,7 @@ package model.entities;
 public class Produto {
 
 	private Integer id;
-	private Integer id_setor;
+	private Setor produto_setor;
 	private String nome;
 	private String descricao;
 	private Double valor;
@@ -11,12 +11,12 @@ public class Produto {
 	public Produto() {
 	}
 	
-	public Produto(Integer id, Integer id_setor, String nome, String descricao, Double valor) {
+	public Produto(Integer id, String nome, String descricao, Double valor, Setor setor) {
 		this.id = id;
-		this.id_setor = id_setor;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.valor = valor;
+		this.produto_setor = setor;
 	}
 
 	public Integer getId() {
@@ -25,14 +25,6 @@ public class Produto {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getId_setor() {
-		return id_setor;
-	}
-
-	public void setId_setor(Integer id_setor) {
-		this.id_setor = id_setor;
 	}
 
 	public String getNome() {
@@ -59,12 +51,18 @@ public class Produto {
 		this.valor = valor;
 	}
 
+	public Setor getProduto_setor() {
+		return produto_setor;
+	}
+
+	public void setProduto_setor(Setor produto_setor) {
+		this.produto_setor = produto_setor;
+	}
+
 	@Override
 	public String toString() {
-		return "Produto [id=" + id + ", id_setor=" + id_setor + ", nome=" + nome + ", descricao=" + descricao
+		return "Produto [id=" + id + ", produto_setor=" + produto_setor + ", nome=" + nome + ", descricao=" + descricao
 				+ ", valor=" + valor + "]";
 	}
-	
-	
 
 }
