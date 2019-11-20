@@ -1,17 +1,23 @@
 package program;
 
 import java.text.ParseException;
+import java.util.List;
 
-import model.dao.ClienteDao;
 import model.dao.DaoFactory;
-import model.entities.Cliente;
+import model.dao.SetorDao;
+import model.entities.Setor;
+import view.TelaPrincipal;
 
 public class Main {
 
 	public static void main(String[] args) throws ParseException {
 
-		//teste
-	
+		TelaPrincipal tg = new TelaPrincipal();
+		tg.setVisible(true);
+		tg.setResizable(false);
+        tg.setSize(912, 476);
+        tg.setLocation(227,126);
+		
 	}
 
 }

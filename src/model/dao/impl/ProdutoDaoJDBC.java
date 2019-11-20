@@ -90,28 +90,18 @@ public class ProdutoDaoJDBC implements ProdutoDao{
 		ResultSet rs = null;
 		
 		try {
-			ps = conn.prepareStatement("SELECT p.*, s.*, g.* FROM produtos AS p " + 
-					"JOIN setores AS s " + 
-					"JOIN gerentes AS g " + 
-					"WHERE s.id_setor = p.id_setor AND s.id_gerente = g.id_gerente AND id_produto = ?");
+			ps = conn.prepareStatement("SELECT p.*, s.* FROM produtos AS p " + 
+					"JOIN setores AS s " +  
+					"WHERE s.id_setor = p.id_setor AND id_produto = ?");
 			ps.setInt(1, id);
 			
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
 				
-				Gerente gerente = new Gerente();
-				gerente.setId(rs.getInt("id_gerente"));
-				gerente.setNome(rs.getString("nome_gerente"));
-				gerente.setCpf(rs.getString("cpf_gerente"));
-				gerente.setTelefone(rs.getString("telefone_gerente"));
-				gerente.setEmail(rs.getString("email_gerente"));
-				gerente.setData_nascimento(rs.getDate("dt_nasciment"));
-				
 				Setor setor = new Setor();
 				setor.setId(rs.getInt("id_setor"));
 				setor.setNome(rs.getString("nome_setor"));
-				setor.setGerente_setor(gerente);
 				
 				Produto p = new Produto();
 				p.setId(rs.getInt("id_produto"));
@@ -139,26 +129,16 @@ public class ProdutoDaoJDBC implements ProdutoDao{
 		ResultSet rs = null;
 		
 		try {
-			ps = conn.prepareStatement("SELECT p.*, s.*, g.* FROM produtos AS p " + 
+			ps = conn.prepareStatement("SELECT p.*, s.* FROM produtos AS p " + 
 					"JOIN setores AS s " + 
-					"JOIN gerentes AS g " + 
-					"WHERE s.id_setor = p.id_setor AND s.id_gerente = g.id_gerente");
+					"WHERE s.id_setor = p.id_setor");
 			rs = ps.executeQuery();
 			
 			while (rs.next()) {
 				
-				Gerente gerente = new Gerente();
-				gerente.setId(rs.getInt("id_gerente"));
-				gerente.setNome(rs.getString("nome_gerente"));
-				gerente.setCpf(rs.getString("cpf_gerente"));
-				gerente.setTelefone(rs.getString("telefone_gerente"));
-				gerente.setEmail(rs.getString("email_gerente"));
-				gerente.setData_nascimento(rs.getDate("dt_nasciment"));
-				
 				Setor setor = new Setor();
 				setor.setId(rs.getInt("id_setor"));
 				setor.setNome(rs.getString("nome_setor"));
-				setor.setGerente_setor(gerente);
 				
 				Produto p = new Produto();
 				p.setId(rs.getInt("id_produto"));
