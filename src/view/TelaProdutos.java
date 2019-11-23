@@ -55,6 +55,11 @@ public class TelaProdutos extends JFrame {
         jButton3.setText("ADICIONAR");
         getContentPane().add(jButton3);
         jButton3.setBounds(220, 360, 100, 40);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	jButton3ActionPerformed(evt);
+            }
+        });
         // End
 
         // Home
@@ -144,5 +149,12 @@ public class TelaProdutos extends JFrame {
         jLabelTelaPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TelaPrincipal.jpeg"))); // NOI18N
         getContentPane().add(jLabelTelaPrincipal);
         jLabelTelaPrincipal.setBounds(0, -30, 900, 470);
+    }
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {  
+    	AddProduto adp = new AddProduto();
+    	adp.setVisible(true);
+        adp.setSize(620, 476);
+        adp.setLocation(227,126);
     }
 }
