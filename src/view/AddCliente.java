@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import model.dao.ClienteDao;
@@ -151,6 +152,8 @@ public class AddCliente extends JFrame {
 
 		ClienteDao c = DaoFactory.createClienteDao();
 		c.insert(cliente);
+		
+		JOptionPane.showMessageDialog(null, "Cliente cadastrado");
 
 	}
 

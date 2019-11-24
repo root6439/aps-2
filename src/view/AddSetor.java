@@ -3,6 +3,7 @@ package view;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import model.dao.DaoFactory;
@@ -113,6 +114,8 @@ public class AddSetor extends JFrame {
 		
 		SetorDao setor = DaoFactory.createSetorDao();
 		setor.insert(s);
+		
+		JOptionPane.showMessageDialog(null, "Setor cadastrado");
 		
 	}
 

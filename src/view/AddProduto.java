@@ -3,6 +3,7 @@ package view;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import model.dao.DaoFactory;
@@ -157,6 +158,8 @@ public class AddProduto extends JFrame {
     	
     	ProdutoDao produto = DaoFactory.createProdutoDao();
     	produto.insert(p);
+    	
+    	JOptionPane.showMessageDialog(null, "Produto cadastrado");
     	
     }
     

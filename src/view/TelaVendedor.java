@@ -52,6 +52,11 @@ public class TelaVendedor extends JFrame {
     	add.setText("ADICIONAR");
         getContentPane().add(add);
         add.setBounds(370, 370, 100, 40);
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
     	// End add
     	
     	// Home search
@@ -150,5 +155,12 @@ public class TelaVendedor extends JFrame {
         getContentPane().add(logo);
         logo.setBounds(0, -30, 900, 470);
     	// End logo
+    }
+    
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {  
+    	AddVendedor adp = new AddVendedor();
+    	adp.setVisible(true);
+        adp.setSize(620, 476);
+        adp.setLocation(227,126);
     }
 }

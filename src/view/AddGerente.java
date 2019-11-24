@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import model.dao.DaoFactory;
@@ -164,6 +165,8 @@ public class AddGerente extends JFrame {
 		
 		GerenteDao g = DaoFactory.createGerenteDao();
 		g.insert(gerente);
+		
+		JOptionPane.showMessageDialog(null, "Gerente cadastrado");
 	}
 
 	private void limparActionPerformed(java.awt.event.ActionEvent evt) {
