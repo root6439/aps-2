@@ -198,33 +198,32 @@ public class TelaClientes extends JFrame {
 	private void updateActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		
+
 		Integer id = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o id do cliente: ", "Atualizar dados"));
-		
+
 		String campo = JOptionPane.showInputDialog(null, "Digite o campo que deseja alterar").toLowerCase();
-		
+
 		String dado = JOptionPane.showInputDialog(null, "Digite o novo valor: ", "Novo valor");
 
-		Cliente c = new Cliente();
-		c.setId(id);
-		
-		if(campo.equals("nome")) {
-			c.setNome(dado);
-		} else if(campo.equals("cpf")) {
-			c.setCpf(dado);
-		} else if(campo.equals("telefone")) {
-			c.setTelefone(dado);
-		} else if(campo.equals("data de nascimento")) {
-			c.setData_nascimento(sdf.parse(dado));
+		ClienteDao cliente = DaoFactory.createClienteDao();
+		Cliente aux = cliente.findById(id);
+
+		if (campo.equals("nome")) {
+			aux.setNome(dado);
+		} else if (campo.equals("cpf")) {
+			aux.setCpf(dado);
+		} else if (campo.equals("telefone")) {
+			aux.setTelefone(dado);
+		} else if (campo.equals("data de nascimento")) {
+			aux.setData_nascimento(sdf.parse(dado));
 		} else {
 			JOptionPane.showMessageDialog(null, "Algo deu errado, tente de novo");
 		}
-		
-		ClienteDao cliente = DaoFactory.createClienteDao();
-		cliente.update(c);
-		
+
+		cliente.update(aux);
+
 		JOptionPane.showMessageDialog(null, "Atualização feita");
-		
+
 	}
 
 }
