@@ -2,6 +2,8 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -72,6 +74,15 @@ public class TelaClientes extends JFrame {
 		edit.setText("EDITAR");
 		getContentPane().add(edit);
 		edit.setBounds(90, 370, 100, 40);
+		edit.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				try {
+					updateActionPerformed(evt);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		// End edit
 
 		// Start delete
@@ -80,10 +91,10 @@ public class TelaClientes extends JFrame {
 		getContentPane().add(delete);
 		delete.setBounds(230, 370, 90, 40);
 		delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteActionPerformed(evt);
-            }
-        });
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				deleteActionPerformed(evt);
+			}
+		});
 		// End delete
 
 		// Start title
@@ -179,8 +190,41 @@ public class TelaClientes extends JFrame {
 
 		ClienteDao c = DaoFactory.createClienteDao();
 		c.deleteById(id);
-		
+
 		JOptionPane.showMessageDialog(null, "Cliente removido");
+
+	}
+
+	private void updateActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
+		Integer id = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o id do cliente: ", "Atualizar dados"));
+		
+		String campo = JOptionPane.showInputDialog(null, "Digite o campo que deseja alterar").toLowerCase();
+		
+		String dado = JOptionPane.showInputDialog(null, "Digite o novo valor: ", "Novo valor");
+
+		Cliente c = new Cliente();
+		c.setId(id);
+		
+		if(campo.equals("nome")) {
+			c.setNome(dado);
+		} else if(campo.equals("cpf")) {
+			c.setCpf(dado);
+		} else if(campo.equals("telefone")) {
+			c.setTelefone(dado);
+		} else if(campo.equals("data de nascimento")) {
+			c.setData_nascimento(sdf.parse(dado));
+		} else {
+			JOptionPane.showMessageDialog(null, "Algo deu errado, tente de novo");
+		}
+		
+		ClienteDao cliente = DaoFactory.createClienteDao();
+		cliente.update(c);
+		
+		JOptionPane.showMessageDialog(null, "Atualização feita");
 		
 	}
+
 }
