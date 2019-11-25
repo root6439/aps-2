@@ -5,6 +5,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
@@ -12,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import model.dao.DaoFactory;
+import model.dao.SetorDao;
 import model.dao.VendaDao;
 import model.entities.Venda;
 
@@ -163,4 +165,5 @@ public class TelaVenda extends JFrame {
         adp.setSize(620, 476);
         adp.setLocation(227,126);
     }
+    
 }

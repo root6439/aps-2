@@ -5,12 +5,14 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import model.dao.ClienteDao;
 import model.dao.DaoFactory;
 import model.dao.GerenteDao;
 import model.entities.Gerente;
@@ -64,6 +66,11 @@ public class TelaGerente extends JFrame {
         delete.setText("EXCLUIR");
         getContentPane().add(delete);
         delete.setBounds(280, 363, 110, 40);
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
         //End delete
         
         // Start edit
@@ -155,4 +162,17 @@ public class TelaGerente extends JFrame {
     	adg.setSize(620, 476);
     	adg.setLocation(227,126);
     }
+    
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {
+
+		Integer id;
+		id = Integer.parseInt(JOptionPane.showInputDialog(null, "Id do gerente a ser removido:", "Remover",
+				JOptionPane.OK_CANCEL_OPTION));
+
+		GerenteDao gerente = DaoFactory.createGerenteDao();
+		gerente.deleteById(id);
+		
+		JOptionPane.showMessageDialog(null, "Gerente removido");
+		
+	}
 }

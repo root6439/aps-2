@@ -5,6 +5,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
@@ -78,6 +79,11 @@ public class TelaVendedor extends JFrame {
         delete.setText("EXCLUIR");
         getContentPane().add(delete);
         delete.setBounds(230, 370, 90, 40);
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
     	// End delete
     	
     	// Home bottom
@@ -162,5 +168,17 @@ public class TelaVendedor extends JFrame {
     	adp.setVisible(true);
         adp.setSize(620, 476);
         adp.setLocation(227,126);
+    }
+    
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {  
+
+    	Integer id;
+    	id = Integer.parseInt(JOptionPane.showInputDialog(null, "Id do vendedor a ser removido:", "Remover", JOptionPane.OK_CANCEL_OPTION));
+    	
+		VendedorDao v = DaoFactory.createVendedorDao();
+		v.deleteById(id);
+		
+		JOptionPane.showMessageDialog(null, "Vendedor removido");
+    	
     }
 }
