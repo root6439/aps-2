@@ -84,8 +84,8 @@ public class SetorDaoJDBC implements SetorDao {
 		ResultSet rs = null;
 
 		try {
-			ps = conn.prepareStatement("SELECT s.*, g.* FROM setores AS s " + "JOIN gerentes AS g "
-					+ "WHERE s.id_gerente = g.id_gerente AND g.id_gerente = null AND s.id_setor = ?");
+			ps = conn.prepareStatement("SELECT * FROM setores "
+					+ "WHERE id_setor = ?");
 			ps.setInt(1, id);
 
 			rs = ps.executeQuery();
@@ -94,11 +94,6 @@ public class SetorDaoJDBC implements SetorDao {
 
 				Gerente gerente = new Gerente();
 				gerente.setId(rs.getInt("id_gerente"));
-				gerente.setNome(rs.getString("nome_gerente"));
-				gerente.setCpf(rs.getString("cpf_gerente"));
-				gerente.setTelefone(rs.getString("telefone_gerente"));
-				gerente.setEmail(rs.getString("email_gerente"));
-				gerente.setData_nascimento(rs.getDate("dt_nasciment"));
 
 				Setor setor = new Setor();
 				setor.setId(rs.getInt("id_setor"));

@@ -20,6 +20,7 @@ public class Main {
         tg.setSize(912, 476);
         tg.setLocation(227,126);
 		tg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 	}
 
 }

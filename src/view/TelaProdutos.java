@@ -1,5 +1,7 @@
 package view;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -13,15 +15,14 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import model.dao.DaoFactory;
+import model.dao.GerenteDao;
 import model.dao.ProdutoDao;
-import model.dao.VendedorDao;
+import model.entities.Gerente;
 import model.entities.Produto;
 
 public class TelaProdutos extends JFrame {
 
 	// Variables declaration
-	private JButton jButton1;
-	private JButton jButton2;
 	private JButton jButton3;
 	private JButton jButton4;
 	private JButton jButton5;
@@ -69,6 +70,15 @@ public class TelaProdutos extends JFrame {
 		jButton4.setText("EDITAR");
 		getContentPane().add(jButton4);
 		jButton4.setBounds(330, 360, 100, 40);
+		jButton4.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				try {
+					updateActionPerformed(evt);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		// End
 
 		// Home
@@ -174,6 +184,31 @@ public class TelaProdutos extends JFrame {
 		p.deleteById(id);
 
 		JOptionPane.showMessageDialog(null, "Produto removido");
+
+	}
+
+	private void updateActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+		Integer id = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o id do produto: "));
+
+		String campo = JOptionPane.showInputDialog(null, "Digite o campo que deseja alterar").toLowerCase();
+
+		String dado = JOptionPane.showInputDialog(null, "Digite o novo valor: ");
+
+		ProdutoDao produto = DaoFactory.createProdutoDao();
+		Produto aux = produto.findById(id);
+
+		if (campo.equals("descrição")) {
+			aux.setDescricao(dado);
+		} else if (campo.equals("valor")) {
+			aux.setValor(Double.parseDouble(dado));
+		} 
+
+		produto.update(aux);
+
+		JOptionPane.showMessageDialog(null, "Atualização feita");
 
 	}
 }
