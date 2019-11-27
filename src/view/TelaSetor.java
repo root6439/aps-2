@@ -10,23 +10,22 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import model.dao.DaoFactory;
-import model.dao.GerenteDao;
 import model.dao.SetorDao;
 import model.entities.Gerente;
 import model.entities.Setor;
 
 public class TelaSetor extends JFrame {
 
+	private static final long serialVersionUID = 1L;
+
 	public TelaSetor() {
 		initComponents();
 	}
 
 	private JButton add;
-	private JButton seacher;
 	private JButton edit;
 	private JButton delete;
 	private JSeparator bottom;
@@ -35,12 +34,10 @@ public class TelaSetor extends JFrame {
 	private JSeparator upperMinor;
 	private JSeparator upper;
 	private JLabel title;
-	private JTextField text;
 	private JTable tableSetores;
 	private JScrollPane scrollPainel;
 	private JLabel Logo;
 
-	@SuppressWarnings("unchecked")
 	private void initComponents() {
 
 		SetorDao s = DaoFactory.createSetorDao();
@@ -54,7 +51,7 @@ public class TelaSetor extends JFrame {
 		add = new JButton();
 		add.setText("ADICIONAR");
 		getContentPane().add(add);
-		add.setBounds(370, 370, 90, 40);
+		add.setBounds(200, 370, 120, 40);
 		add.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				addActionPerformed(evt);
@@ -62,24 +59,16 @@ public class TelaSetor extends JFrame {
 		});
 		// End add
 
-		// Start seacher
-		seacher = new JButton();
-		seacher.setText("BUSCAR");
-		getContentPane().add(seacher);
-		seacher.setBounds(500, 370, 90, 40);
-		// End seacher
-
 		// Start edit
 		edit = new JButton();
 		edit.setText("EDITAR");
 		getContentPane().add(edit);
-		edit.setBounds(90, 370, 100, 40);
+		edit.setBounds(400, 370, 120, 40);
 		edit.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
 					updateActionPerformed(evt);
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -90,19 +79,13 @@ public class TelaSetor extends JFrame {
 		delete = new JButton();
 		delete.setText("EXCLUIR");
 		getContentPane().add(delete);
-		delete.setBounds(230, 370, 90, 40);
+		delete.setBounds(600, 370, 120, 40);
 		delete.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				deleteActionPerformed(evt);
 			}
 		});
 		// End delete
-
-		// Start text
-		text = new JTextField();
-		getContentPane().add(text);
-		text.setBounds(610, 380, 180, 30);
-		// End text
 
 		// Start upperMinor
 		upperMinor = new JSeparator();
@@ -120,7 +103,7 @@ public class TelaSetor extends JFrame {
 		// Start upper
 		upper = new JSeparator();
 		getContentPane().add(upper);
-		upper.setBounds(100, 30, 750, 10);
+		upper.setBounds(105, 30, 745, 10);
 		// End upper
 
 		// Start rightSide
@@ -140,7 +123,7 @@ public class TelaSetor extends JFrame {
 		title = new JLabel();
 		title.setText("SETORES");
 		getContentPane().add(title);
-		title.setBounds(40, 20, 60, 20);
+		title.setBounds(40, 20, 70, 20);
 		// End
 
 		String[] colunas = { "Id", "Nome", "Gerente" };
@@ -170,7 +153,7 @@ public class TelaSetor extends JFrame {
 		Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TelaPrincipal.jpeg"))); // NOI18N
 		Logo.setIconTextGap(5);
 		getContentPane().add(Logo);
-		Logo.setBounds(0, -30, 900, 470);
+		Logo.setBounds(0, -24, 912, 470);
 		// End Logo
 
 	}
@@ -189,6 +172,7 @@ public class TelaSetor extends JFrame {
 				JOptionPane.OK_CANCEL_OPTION));
 
 		SetorDao s = DaoFactory.createSetorDao();
+		s.deleteById(id);
 
 		JOptionPane.showMessageDialog(null, "Setor removido");
 
@@ -211,7 +195,6 @@ public class TelaSetor extends JFrame {
 		if (campo.equals("nome")) {
 			aux.setNome(dado);
 		} else if (campo.equals("gerente")) {
-			Gerente ge = new Gerente();
 			aux.getGerente_setor().setId(Integer.parseInt(dado));
 		}
 

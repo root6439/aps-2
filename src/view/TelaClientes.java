@@ -1,7 +1,5 @@
 package view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -13,15 +11,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import model.dao.ClienteDao;
 import model.dao.DaoFactory;
-import model.dao.VendedorDao;
 import model.entities.Cliente;
 
 public class TelaClientes extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 
 	public TelaClientes() {
 		initComponents();
@@ -29,11 +27,9 @@ public class TelaClientes extends JFrame {
 
 	// Variables declaration
 	private JButton add;
-	private JButton search;
 	private JButton edit;
 	private JButton delete;
 	private JLabel title;
-	private JTextField text;
 	private JSeparator bottom;
 	private JSeparator rigthSide;
 	private JSeparator leftSide;
@@ -47,7 +43,6 @@ public class TelaClientes extends JFrame {
 
 // End variables
 
-	@SuppressWarnings("unchecked")
 	private void initComponents() {
 
 		ClienteDao c = DaoFactory.createClienteDao();
@@ -66,14 +61,14 @@ public class TelaClientes extends JFrame {
 				addActionPerformed(evt);
 			}
 		});
-		add.setBounds(370, 370, 100, 40);
+		add.setBounds(600, 370, 120, 40);
 		// End add
 
 		// Start edit
 		edit = new JButton();
 		edit.setText("EDITAR");
 		getContentPane().add(edit);
-		edit.setBounds(90, 370, 100, 40);
+		edit.setBounds(200, 370, 100, 40);
 		edit.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
@@ -89,7 +84,7 @@ public class TelaClientes extends JFrame {
 		delete = new JButton();
 		delete.setText("EXCLUIR");
 		getContentPane().add(delete);
-		delete.setBounds(230, 370, 90, 40);
+		delete.setBounds(400, 370, 120, 40);
 		delete.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				deleteActionPerformed(evt);
@@ -103,12 +98,6 @@ public class TelaClientes extends JFrame {
 		getContentPane().add(title);
 		title.setBounds(40, 20, 100, 20);
 		// End title
-
-		// Start text
-		text = new JTextField();
-		getContentPane().add(text);
-		text.setBounds(610, 375, 180, 30);
-		// End text
 
 		// Start bottom
 		bottom = new JSeparator();
@@ -139,7 +128,7 @@ public class TelaClientes extends JFrame {
 		// Start upper
 		upper = new JSeparator();
 		getContentPane().add(upper);
-		upper.setBounds(100, 30, 750, 10);
+		upper.setBounds(105, 30, 745, 10);
 		// End upper
 
 		// Start tableClientes
@@ -170,7 +159,7 @@ public class TelaClientes extends JFrame {
 		telaPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TelaPrincipal.jpeg"))); // NOI18N
 		telaPrincipal.setIconTextGap(5);
 		getContentPane().add(telaPrincipal);
-		telaPrincipal.setBounds(0, -30, 900, 470);
+		telaPrincipal.setBounds(0, -24, 912, 470);
 		// End telaPrincipal
 
 	}

@@ -14,6 +14,9 @@ import model.dao.GerenteDao;
 import model.entities.Gerente;
 
 public class AddGerente extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+
 	public AddGerente() {
 		initComponents();
 	}
@@ -27,7 +30,7 @@ public class AddGerente extends JFrame {
 	private JButton salvar;
 	private JButton limpar;
 	private JLabel jLabelTelaPrincipal;
-	private JLabel id, nome, c, te, quant, val, ema;
+	private JLabel id, nome, c, te, val, ema;
 
 	private void initComponents() {
 		// Home layout null for background image

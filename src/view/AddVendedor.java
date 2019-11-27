@@ -15,6 +15,9 @@ import model.entities.Setor;
 import model.entities.Vendedor;
 
 public class AddVendedor extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+
 	public AddVendedor() {
 		initComponents();
 	}
@@ -104,7 +107,6 @@ public class AddVendedor extends JFrame {
 				try {
 					salvarActionPerformed(evt);
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

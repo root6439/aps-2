@@ -8,11 +8,13 @@ import javax.swing.JTextField;
 
 import model.dao.DaoFactory;
 import model.dao.ProdutoDao;
-import model.dao.SetorDao;
 import model.entities.Produto;
 import model.entities.Setor;
 
 public class AddProduto extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+
 	public AddProduto() {
 		initComponents();
 	}
@@ -91,10 +93,6 @@ public class AddProduto extends JFrame {
         getContentPane().add(quant);
         quant.setBounds(100, 250, 70, 14);
         //end
-        
-        // Home idProduto
-       
-        // End
         
         // home
         val = new JLabel();

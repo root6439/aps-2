@@ -112,6 +112,7 @@ public class SetorDaoJDBC implements SetorDao {
 		return null;
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public List<Setor> findAll() {
 

@@ -1,7 +1,6 @@
 package view;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -11,17 +10,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import model.dao.DaoFactory;
-import model.dao.GerenteDao;
 import model.dao.ProdutoDao;
-import model.entities.Gerente;
 import model.entities.Produto;
 
 public class TelaProdutos extends JFrame {
 
+	private static final long serialVersionUID = 1L;
+	
 	// Variables declaration
 	private JButton jButton3;
 	private JButton jButton4;
@@ -30,7 +28,6 @@ public class TelaProdutos extends JFrame {
 	private JSeparator upperMinor;
 	private JSeparator leftSide;
 	private JSeparator rightSide;
-	private JTextField text;
 	private JSeparator bottom;
 	private JLabel jLabelNomePrincipal;
 	private javax.swing.JTable jTableProdutos;
@@ -43,7 +40,6 @@ public class TelaProdutos extends JFrame {
 		initComponents();
 	}
 
-	@SuppressWarnings("unchecked")
 	private void initComponents() {
 
 		ProdutoDao p = DaoFactory.createProdutoDao();
@@ -57,7 +53,7 @@ public class TelaProdutos extends JFrame {
 		jButton3 = new JButton();
 		jButton3.setText("ADICIONAR");
 		getContentPane().add(jButton3);
-		jButton3.setBounds(220, 360, 100, 40);
+		jButton3.setBounds(200, 360, 120, 40);
 		jButton3.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jButton3ActionPerformed(evt);
@@ -69,7 +65,7 @@ public class TelaProdutos extends JFrame {
 		jButton4 = new JButton();
 		jButton4.setText("EDITAR");
 		getContentPane().add(jButton4);
-		jButton4.setBounds(330, 360, 100, 40);
+		jButton4.setBounds(400, 360, 100, 40);
 		jButton4.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
@@ -85,7 +81,7 @@ public class TelaProdutos extends JFrame {
 		jButton5 = new JButton();
 		jButton5.setText("EXCLUIR");
 		getContentPane().add(jButton5);
-		jButton5.setBounds(440, 360, 100, 40);
+		jButton5.setBounds(600, 360, 100, 40);
 		jButton5.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				deleteActionPerformed(evt);
@@ -93,49 +89,43 @@ public class TelaProdutos extends JFrame {
 		});
 		// End
 
-		// Start text
-		text = new JTextField();
-		getContentPane().add(text);
-		text.setBounds(610, 370, 180, 30);
-		// End text
-
 		// Home
 		jLabelNomePrincipal = new javax.swing.JLabel();
 		jLabelNomePrincipal.setText("PRODUTOS");
 		getContentPane().add(jLabelNomePrincipal);
-		jLabelNomePrincipal.setBounds(30, 25, 100, 14);
+		jLabelNomePrincipal.setBounds(55, 25, 100, 14);
 		// End
 
 		// Start upper
 		upper = new JSeparator();
 		getContentPane().add(upper);
-		upper.setBounds(100, 30, 730, 10);
+		upper.setBounds(140, 30, 730, 10);
 		// End upper
 
 		// Start upperMinor
 		upperMinor = new JSeparator();
 		getContentPane().add(upperMinor);
-		upperMinor.setBounds(10, 30, 10, 10);
+		upperMinor.setBounds(40, 30, 10, 10);
 		// End upperMinor
 
 		// Start leftSide
 		leftSide = new JSeparator();
 		leftSide.setOrientation(javax.swing.SwingConstants.VERTICAL);
 		getContentPane().add(leftSide);
-		leftSide.setBounds(10, 30, 10, 310);
+		leftSide.setBounds(40, 30, 10, 310);
 		// End leftSide
 
 		// Start rightSide
 		rightSide = new JSeparator();
 		rightSide.setOrientation(javax.swing.SwingConstants.VERTICAL);
 		getContentPane().add(rightSide);
-		rightSide.setBounds(830, 30, 10, 310);
+		rightSide.setBounds(870, 30, 10, 310);
 		// End rightSide
 
 		// Start bottom
 		bottom = new JSeparator();
 		getContentPane().add(bottom);
-		bottom.setBounds(10, 340, 820, 10);
+		bottom.setBounds(40, 340, 832, 10);
 		// End bottom
 
 		String[] colunas = { "ID", "Nome", "Setor", "Descrição", "Valor" };
@@ -158,13 +148,13 @@ public class TelaProdutos extends JFrame {
 		pane = new JScrollPane();
 		pane.setViewportView(jTableProdutos);
 		getContentPane().add(pane);
-		pane.setBounds(20, 60, 800, 250);
+		pane.setBounds(50, 60, 800, 250);
 		// End pane
 
 		jLabelTelaPrincipal = new JLabel();
 		jLabelTelaPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TelaPrincipal.jpeg"))); // NOI18N
 		getContentPane().add(jLabelTelaPrincipal);
-		jLabelTelaPrincipal.setBounds(0, -30, 900, 470);
+		jLabelTelaPrincipal.setBounds(0, -24, 912, 470);
 	}
 
 	private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,8 +178,6 @@ public class TelaProdutos extends JFrame {
 	}
 
 	private void updateActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
-
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 		Integer id = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o id do produto: "));
 

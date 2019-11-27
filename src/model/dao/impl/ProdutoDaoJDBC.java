@@ -10,7 +10,6 @@ import java.util.List;
 import databaseaccess.DB;
 import databaseaccess.DbException;
 import model.dao.ProdutoDao;
-import model.entities.Gerente;
 import model.entities.Produto;
 import model.entities.Setor;
 

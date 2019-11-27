@@ -1,14 +1,13 @@
 package view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class TelaPrincipal extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 	
-    // Variables declaration - do not modify  
+	// Variables declaration - do not modify  
 	private JButton product;
 	private JButton client;
 	private JButton manager;
@@ -16,7 +15,6 @@ public class TelaPrincipal extends JFrame {
 	private JButton sector;
 	private JButton salesman;
 	    
-    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -24,9 +22,6 @@ public class TelaPrincipal extends JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabelImgCliente;
-    private javax.swing.JLabel jLabelImgGerente;
-    private javax.swing.JLabel jLabelImgProdutos;
     private javax.swing.JLabel jLabelProdutos;
     private javax.swing.JLabel jLabelTelaPrincipal;
     private javax.swing.JSeparator jSeparator1;
@@ -36,7 +31,6 @@ public class TelaPrincipal extends JFrame {
         initComponents();
     }
 
-    @SuppressWarnings("unchecked")
     private void initComponents() {
     	
     	// Home layout null for background image
@@ -52,15 +46,15 @@ public class TelaPrincipal extends JFrame {
         
     	// Home
         jLabel5 = new javax.swing.JLabel();
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setText("Usuário: pauloglata");
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); 
+        jLabel5.setText("Usuário");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(50, 220, 150, 30);
     	// End 
         
     	// Home
         jLabel6 = new javax.swing.JLabel();
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); 
         jLabel6.setText("Gerente de vendas");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(50, 250, 160, 30);
@@ -151,7 +145,7 @@ public class TelaPrincipal extends JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel4.setText("VENDEDORES");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(750, 265, 80, 20);
+        jLabel4.setBounds(750, 265, 100, 20);
     	// End 
     	
     	// Home
@@ -198,14 +192,14 @@ public class TelaPrincipal extends JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel7.setText("@ares 2019");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(800, 390, 70, 14);
+        jLabel7.setBounds(800, 390, 100, 14);
     	// End 
         
     	// Home
         jLabelTelaPrincipal = new javax.swing.JLabel();
         jLabelTelaPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TelaPrincipal.jpeg"))); // NOI18N
       getContentPane().add(jLabelTelaPrincipal);
-      jLabelTelaPrincipal.setBounds(0, -30, 900, 470);
+      jLabelTelaPrincipal.setBounds(0, -24, 912, 470);
     	// End 
 
         setSize(new java.awt.Dimension(913, 478));

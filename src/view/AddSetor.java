@@ -12,6 +12,9 @@ import model.entities.Gerente;
 import model.entities.Setor;
 
 public class AddSetor extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+
 	public AddSetor() {
 		initComponents();
 	}
@@ -22,7 +25,7 @@ public class AddSetor extends JFrame {
 	private JButton salvar;
 	private JButton limpar;
 	private JLabel jLabelTelaPrincipal;
-	private JLabel id, nome, c, te, quant, val, ema;
+	private JLabel nome, c, te;
 
 	private void initComponents() {
 		// Home layout null for background image

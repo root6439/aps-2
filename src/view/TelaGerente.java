@@ -11,16 +11,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import model.dao.ClienteDao;
 import model.dao.DaoFactory;
 import model.dao.GerenteDao;
-import model.entities.Cliente;
 import model.entities.Gerente;
 
 public class TelaGerente extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 
 	public TelaGerente() {
 		initComponents();
@@ -37,12 +36,10 @@ public class TelaGerente extends JFrame {
 	private JSeparator leftSide;
 	private JSeparator rightSide;
 	private JSeparator bottom;
-	private JTextField textField;
 	private JScrollPane pane;
 	private JTable tableGerente;
 	// End variables
 
-	@SuppressWarnings("unchecked")
 	private void initComponents() {
 
 		GerenteDao g = DaoFactory.createGerenteDao();
@@ -56,7 +53,7 @@ public class TelaGerente extends JFrame {
 		add = new JButton();
 		add.setText("ADICIONAR");
 		getContentPane().add(add);
-		add.setBounds(130, 363, 110, 40);
+		add.setBounds(150, 363, 110, 40);
 		add.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				addActionPerformed(evt);
@@ -68,7 +65,7 @@ public class TelaGerente extends JFrame {
 		delete = new JButton();
 		delete.setText("EXCLUIR");
 		getContentPane().add(delete);
-		delete.setBounds(280, 363, 110, 40);
+		delete.setBounds(350, 363, 110, 40);
 		delete.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				deleteActionPerformed(evt);
@@ -80,7 +77,7 @@ public class TelaGerente extends JFrame {
 		edit = new JButton();
 		edit.setText("EDITAR");
 		getContentPane().add(edit);
-		edit.setBounds(430, 363, 110, 40);
+		edit.setBounds(550, 363, 110, 40);
 		edit.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
@@ -96,46 +93,40 @@ public class TelaGerente extends JFrame {
 		text = new JLabel();
 		text.setText("GERENTES");
 		getContentPane().add(text);
-		text.setBounds(40, 20, 60, 20);
+		text.setBounds(60, 20, 70, 20);
 		// End text
 
 		// Start upper
 		upper = new JSeparator();
 		getContentPane().add(upper);
-		upper.setBounds(105, 30, 725, 10);
+		upper.setBounds(145, 30, 725, 10);
 		// End upper
 
 		// Start upperMinor
 		upperMinor = new JSeparator();
 		getContentPane().add(upperMinor);
-		upperMinor.setBounds(10, 30, 20, 10);
+		upperMinor.setBounds(40, 30, 15, 10);
 		// End upperMinor
 
 		// Start leftSide
 		leftSide = new JSeparator();
 		leftSide.setOrientation(javax.swing.SwingConstants.VERTICAL);
 		getContentPane().add(leftSide);
-		leftSide.setBounds(10, 30, 10, 310);
+		leftSide.setBounds(40, 30, 10, 310);
 		// End leftSide
 
 		// Start rightSide
 		rightSide = new JSeparator();
 		rightSide.setOrientation(javax.swing.SwingConstants.VERTICAL);
 		getContentPane().add(rightSide);
-		rightSide.setBounds(830, 30, 10, 310);
+		rightSide.setBounds(870, 30, 10, 310);
 		// End rightSide
 
 		// Start bottom
 		bottom = new JSeparator();
 		getContentPane().add(bottom);
-		bottom.setBounds(10, 340, 820, 10);
+		bottom.setBounds(40, 340, 832, 10);
 		// End bottom
-
-		// Start textField
-		textField = new JTextField();
-		getContentPane().add(textField);
-		textField.setBounds(610, 370, 200, 30);
-		// End textField
 
 		String[] colunas = { "ID", "Nome", "CPF", "Telefone", "E-mail", "Data de Nascimento" };
 		DefaultTableModel model = new DefaultTableModel(colunas, 0);
@@ -154,14 +145,14 @@ public class TelaGerente extends JFrame {
 		pane = new JScrollPane();
 		pane.setViewportView(tableGerente);
 		getContentPane().add(pane);
-		pane.setBounds(20, 60, 800, 250);
+		pane.setBounds(45, 60, 800, 250);
 		// End pane
 
 		// Start LogoLogin
 		logoLogin = new JLabel();
 		logoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TelaPrincipal.jpeg"))); // NOI18N
 		getContentPane().add(logoLogin);
-		logoLogin.setBounds(0, -30, 900, 470);
+		logoLogin.setBounds(0, -24, 912, 470);
 		// End LogoLogin
 
 	}

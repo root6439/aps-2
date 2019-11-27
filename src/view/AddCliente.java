@@ -2,7 +2,6 @@ package view;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,6 +14,9 @@ import model.dao.DaoFactory;
 import model.entities.Cliente;
 
 public class AddCliente extends JFrame {
+	
+	private static final long serialVersionUID = 1L;
+
 	public AddCliente() {
 		initComponents();
 	}
@@ -27,7 +29,7 @@ public class AddCliente extends JFrame {
 	private JButton salvar;
 	private JButton limpar;
 	private JLabel jLabelTelaPrincipal;
-	private JLabel id, nome, c, te, quant, val;
+	private JLabel id, nome, c, te, val;
 
 	private void initComponents() {
 		// Home layout null for background image
@@ -107,7 +109,6 @@ public class AddCliente extends JFrame {
 				try {
 					salvarActionPerformed(evt);
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

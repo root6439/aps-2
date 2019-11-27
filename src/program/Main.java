@@ -1,13 +1,9 @@
 package program;
 
 import java.text.ParseException;
-import java.util.List;
 
 import javax.swing.JFrame;
 
-import model.dao.DaoFactory;
-import model.dao.SetorDao;
-import model.entities.Setor;
 import view.TelaPrincipal;
 
 public class Main {
